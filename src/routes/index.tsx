@@ -1,13 +1,27 @@
-import {Router, Scene} from 'react-native-router-flux';
+import React from 'react';
+import {Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import BackgroundStyled from '../component/BackgroundStyled';
 import Home from './home';
+
+const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
-    <Router>
-      <Scene key="root">
-        <Scene key="inicio" title="Inicio" component={Home} initial={true} />
-      </Scene>
-    </Router>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Inicio"
+          component={() => (
+            <BackgroundStyled>
+              <Home />
+            </BackgroundStyled>
+          )}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
